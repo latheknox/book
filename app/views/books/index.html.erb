@@ -1,0 +1,6 @@
+<% @books.each do |book| %>
+<h2><%= link_to book.title, book_path(book) %></h2>
+<p class="h4"><span>作者: </span><%= book.author %> | <span><%= book.created_at %></span></p>
+<% end %>
+
+<%= link_to "添加新书", new_book_path %>

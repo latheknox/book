@@ -7,7 +7,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+   <nav class="navbar navbar-default">
+       <div class="container">
+           <div class="navbar-header">
+               <%= link_to "书墙", root_path, class:"navbar-brand" %>
+           </div>
+           
+           <ul class="nav navbar-nav">
+               <li><%= link_to "注册", new_user_registration_path %></li>
+               <% if user_signed_in? %>
+               <li><%= link_to "登出", destroy_user_session_path, method: :delete %></li>
+               <% else %>
+               <li><%= link_to "登陆", new_user_session_path %></li>
+               <% end %>
+           </ul>
+           
+           <ul class="nav navbar-nav navbar-right">
+               <% if user_signed_in? %>
+               <li class="h4"><%= link_to "添加新书", new_book_path %></li>
+               <% end %>
+           </ul>
+       </div>
+   </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 <%= yield %>
 
 </body>
