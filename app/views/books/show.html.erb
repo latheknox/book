@@ -1,7 +1,13 @@
 <h2><%= @book.title %></h2>
 <p><%= @book.created_at %></p>
 <h3><span>作者: </span><%= @book.author %></h3>
+<h4>类型:<%= @book.category.name %></h4>
 <p><%= @book.description %></p>
 <%= link_to "返回首页",root_path %>
-<%= link_to "编辑",edit_book_path(@book) %>
-<%= link_to "删除", book_path(@book),method: :delete, data: {confirm:"点击确认删除该书"} %>
+<% if user_signed_in? %>
+
+<% if @book.user_id == current_user.id %>
+    <%= link_to "编辑",edit_book_path(@book) %>
+    <%= link_to "删除", book_path(@book),method: :delete, data: {confirm:"点击确认删除该书"} %>
+<% end %>
+<% end %>
