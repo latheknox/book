@@ -1,9 +1,15 @@
-<%= image_tag @book.book_img.url(:original), class: "bookShow" %>
-<h2><%= @book.title %></h2>
-<p><%= @book.created_at %></p>
-<h3><span>作者: </span><%= @book.author %></h3>
-<h4>类型:<%= @book.category.name %></h4>
-<p><%= @book.description %></p>
+<div class="row">  
+   <div class="col-md-4"> 
+    <%= image_tag @book.book_img.url(:original), class: "bookShow" %>
+    </div>
+    <div class="col-md-8">
+        <h2><%= @book.title %></h2>
+        <p><%= @book.created_at %></p>
+        <h3><span>作者: </span><%= @book.author %></h3>
+        <h4>类型:<%= @book.category.name %></h4>
+        <p><%= @book.description %></p>
+    </div>
+</div> 
 <%= link_to "返回首页",root_path %>
 <% if user_signed_in? %>
 
